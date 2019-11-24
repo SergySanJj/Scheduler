@@ -1,0 +1,33 @@
+<processes>
+    <meandev>1100</meandev>
+    <standdev>510</standdev>
+    <runtime>5000</runtime>
+    <quantum>10</quantum>
+
+    <group>
+        <name>System</name>
+        <process>100</process>
+        <process>200</process>
+    </group>
+    <group>
+        <name>User1</name>
+        <process>30</process>
+        <process>100</process>
+        <process>100</process>
+        <process>200</process>
+    </group>
+    <group>
+        <name>User2</name>
+        <process>10</process>
+        <process>10</process>
+        <process>15</process>
+        <process>20</process>
+    </group>
+    <group>
+        <name>User3</name>
+        <process>50</process>
+        <process>450</process>
+        <process>2000</process>
+        <process>100</process>
+    </group>
+</processes>
