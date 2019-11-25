@@ -83,12 +83,12 @@ public class ProcessSimulation implements ActionOnQuantum {
     public String getStatus() {
         StringBuilder res = new StringBuilder();
         res.append(StringMisc.form(currentState.toString(), 12)).append(" (").
-                append(StringMisc.form(cpuTimeNeeden, 5)).append(" ").
-                append(StringMisc.form(ioblocking, 5)).append(" ").
-                append(StringMisc.form(cpuTotal, 5)).append(" ").
-                append(StringMisc.form(blockPeriod, 5)).append(" ").
-                append(StringMisc.form(quantumsReceived, 5)).append(" ").
-                append(StringMisc.form(timesBlocked, 4)).append(")");
+                append(StringMisc.form(cpuTimeNeeden, 10)).append(" ").
+                append(StringMisc.form(ioblocking, 10)).append(" ").
+                append(StringMisc.form(cpuTotal, 10)).append(" ").
+                append(StringMisc.form(blockPeriod, 10)).append(" ").
+                append(StringMisc.form(quantumsReceived, 10)).append(" ").
+                append(StringMisc.form(timesBlocked, 10)).append(")");
         return res.toString();
     }
 

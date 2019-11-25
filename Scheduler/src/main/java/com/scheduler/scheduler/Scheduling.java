@@ -20,7 +20,8 @@ public class Scheduling {
     public static void main(String[] args) {
         tryLoadConfig(args);
 
-        FairShare fairShare = new FairShare();
+        SchedulerAlgorithm schedulerAlgorithm = new FairShare();
+
         File resFile = new File("res/Summary-Results.txt");
         File procFile = new File("res/Summary-Processes.txt");
         try {
@@ -29,7 +30,7 @@ public class Scheduling {
             PrintStream procStream = new PrintStream(procOut);
 
             // Algorithm
-            fairShare.run(simulation, procStream);
+            schedulerAlgorithm.run(simulation, procStream);
 
             procStream.close();
             procOut.close();

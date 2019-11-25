@@ -1,25 +1,31 @@
 Scheduling via: Fair Share algorithm
 Quantum   100     
-Mean      1100    
+Mean      600     
 Deviation 400     
-Runtime   20000   
-Process  name   Cpu need    Block   Work    Blocked        Status
+Block mean50      
+Block dev 10      
+Runtime   10000   
+Process  name   Cpu need    Block   Work    BlockT  Blocked        Status      Quantum received
 Group System  
-Process 0           558     100     558     5        times COMPLETED
-Process 1           1436    200     1436    7        times COMPLETED
+Process 0           1363    100     1363    45      1263     times COMPLETED   14      
+Process 1           735     200     735     46      535      times COMPLETED   8       
 Group User1   
-Process 0           1443    30      1443    48       times COMPLETED
-Process 1           1202    100     1202    12       times COMPLETED
-Process 2           1144    100     1144    11       times COMPLETED
-Process 3           1461    200     1461    7        times COMPLETED
+Process 0           885     30      885     37      855      times COMPLETED   9       
+Process 1           190     100     190     55      90       times COMPLETED   2       
+Process 2           1166    100     900     47      801      times REGISTERED  9       
+Process 3           580     200     580     43      380      times COMPLETED   6       
 Group User2   
-Process 0           1390    10      1390    139      times COMPLETED
-Process 1           1140    10      1140    114      times COMPLETED
-Process 2           987     15      987     65       times COMPLETED
-Process 3           1075    20      1075    53       times COMPLETED
+Process 0           510     10      510     29      500      times COMPLETED   6       
+Process 1           61      10      61      59      51       times COMPLETED   1       
+Process 2           1215    15      1000    45      986      times IO_BLOCKED  10      
+Process 3           847     20      847     70      827      times COMPLETED   9       
 Group User3   
-Process 0           1833    50      1833    36       times COMPLETED
-Process 1           646     450     646     1        times COMPLETED
-Process 2           1786    2000    1786    0        times COMPLETED
-Process 3           1298    100     1298    12       times COMPLETED
+Process 0           560     50      560     45      510      times COMPLETED   6       
+Process 1           872     450     700     52      251      times REGISTERED  7       
+Process 2           952     2000    700     66      0        times REGISTERED  7       
+Process 3           600     100     600     46      500      times COMPLETED   6       
+
+Summary:
+Total           Cpu Need        Cpu Worked      Quantum got     Processes       Finished        
+                10536           9631            100             14              10              
 
