@@ -3,22 +3,23 @@ Quantum   100
 Mean      1100    
 Deviation 400     
 Runtime   20000   
+Process  name   Cpu need    Block   Work    Blocked        Status
 Group System  
-Process 0           844     100     844     8        times COMPLETED
-Process 1           1378    200     1378    6        times COMPLETED
+Process 0           558     100     558     5        times COMPLETED
+Process 1           1436    200     1436    7        times COMPLETED
 Group User1   
-Process 0           1253    30      1253    41       times COMPLETED
-Process 1           1810    100     1810    18       times COMPLETED
-Process 2           1238    100     1238    12       times COMPLETED
-Process 3           681     200     681     3        times COMPLETED
+Process 0           1443    30      1443    48       times COMPLETED
+Process 1           1202    100     1202    12       times COMPLETED
+Process 2           1144    100     1144    11       times COMPLETED
+Process 3           1461    200     1461    7        times COMPLETED
 Group User2   
-Process 0           1216    10      1216    121      times COMPLETED
-Process 1           1376    10      1376    137      times COMPLETED
-Process 2           1298    15      1298    86       times COMPLETED
-Process 3           1397    20      1397    69       times COMPLETED
+Process 0           1390    10      1390    139      times COMPLETED
+Process 1           1140    10      1140    114      times COMPLETED
+Process 2           987     15      987     65       times COMPLETED
+Process 3           1075    20      1075    53       times COMPLETED
 Group User3   
-Process 0           1052    50      1052    21       times COMPLETED
-Process 1           621     450     621     1        times COMPLETED
-Process 2           1338    2000    1338    0        times COMPLETED
-Process 3           1652    100     1652    16       times COMPLETED
+Process 0           1833    50      1833    36       times COMPLETED
+Process 1           646     450     646     1        times COMPLETED
+Process 2           1786    2000    1786    0        times COMPLETED
+Process 3           1298    100     1298    12       times COMPLETED
 

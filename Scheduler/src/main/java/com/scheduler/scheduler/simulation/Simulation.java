@@ -29,11 +29,23 @@ public class Simulation implements ActionOnQuantum {
         res.append(StringMisc.form("Deviation ")).append(StringMisc.form(standdev)).append("\n");
         res.append(StringMisc.form("Runtime   ")).append(StringMisc.form(runtime)).append("\n");
 
+        res.append(getTitle()).append("\n");
+
         for (ProcessGroup group : processGroups) {
             res.append("Group ").append(StringMisc.form(group.getName())).append("\n");
             res.append(group.toString());
         }
         return res.toString();
+    }
+
+    private String getTitle() {
+        return StringMisc.form("Process") +
+                StringMisc.form(" name") +
+                StringMisc.form("Cpu need", 12) +
+                StringMisc.form("Block", 8) +
+                StringMisc.form("Work", 8) +
+                StringMisc.form("Blocked", 15) +
+                StringMisc.form("Status", 0);
     }
 
     public int getMeandev() {
@@ -84,10 +96,10 @@ public class Simulation implements ActionOnQuantum {
         return processGroups.size();
     }
 
-    public int countNotCompleted(){
-        int cnt=0;
-        for (ProcessGroup group:processGroups){
-            if (group.getCurrentState()!=ProcessState.COMPLETED)
+    public int countNotCompleted() {
+        int cnt = 0;
+        for (ProcessGroup group : processGroups) {
+            if (group.getCurrentState() != ProcessState.COMPLETED)
                 cnt++;
         }
         return cnt;

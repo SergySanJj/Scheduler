@@ -31,6 +31,8 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     private static int distribute(int avg, int deviation) {
         double val = random.nextGaussian() * deviation + avg;
+        if (val < 0.)
+            return avg;
         return (int) Math.round(val);
     }
 
