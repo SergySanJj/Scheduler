@@ -17,10 +17,6 @@ public class StAXParser<T> implements Parser<T> {
     private String schemePath = null;
 
 
-    public StAXParser(Handler<T> concreteHandler) {
-        handler = concreteHandler;
-    }
-
     public StAXParser(Handler<T> concreteHandler, String pathToSchema) {
         handler = concreteHandler;
         schemePath = pathToSchema;

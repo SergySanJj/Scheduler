@@ -1,8 +1,10 @@
 package com.scheduler.scheduler.simulation;
 
+import com.StringMisc;
+
 import java.util.Random;
 
-public class ProcessSimulation {
+public class ProcessSimulation implements ActionOnQuantum {
     private static Random random = new Random();
 
     private int cpuTimeNeeden;
@@ -23,6 +25,7 @@ public class ProcessSimulation {
         ProcessSimulation processSimulation = new ProcessSimulation();
         processSimulation.setCpuTimeNeeden(distribute(meandev, standdev));
         processSimulation.setCurrentState(ProcessState.PENDING);
+        processSimulation.setIoblocking(ioblocking);
         return processSimulation;
     }
 
@@ -31,7 +34,8 @@ public class ProcessSimulation {
         return (int) Math.round(val);
     }
 
-    public ProcessState receiveQuantum(int quantum) {
+    @Override
+    public String receiveQuantum(int quantum) {
         if (currentState == ProcessState.PENDING || currentState == ProcessState.IO_BLOCKED) {
             currentState = ProcessState.REGISTERED;
         }
@@ -49,36 +53,37 @@ public class ProcessSimulation {
             cpuTotal = cpuTimeNeeden;
             timesBlocked = cpuTotal / ioblocking;
             currentState = ProcessState.COMPLETED;
-            return currentState;
+            return getStatus();
         } else if (leftFromPrevious == 0)
             currentState = ProcessState.IO_BLOCKED;
 
-        return currentState;
+        return getStatus();
+    }
+
+    @Override
+    public String getStatus() {
+        StringBuilder res = new StringBuilder();
+        res.append(StringMisc.form(currentState.toString())).append(" (").
+                append(StringMisc.form(cpuTimeNeeden)).append(" ").
+                append(StringMisc.form(ioblocking)).append(" ").
+                append(StringMisc.form(cpuTotal)).append(" ").
+                append(StringMisc.form(timesBlocked)).append(")");
+        return res.toString();
+    }
+
+    @Override
+    public ActionOnQuantum nextAvailable() {
+        return this;
     }
 
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
         res.append("   ");
-        res.append(getCpuTimeNeeden());
-        if (getCpuTimeNeeden() < 100) {
-            res.append(" (ms)\t\t");
-        } else {
-            res.append(" (ms)\t");
-        }
-        res.append(getIoblocking());
-        if (getIoblocking() < 100) {
-            res.append(" (ms)\t\t");
-        } else {
-            res.append(" (ms)\t");
-        }
-        res.append(getCpuTotal());
-        if (getCpuTotal() < 100) {
-            res.append(" (ms)\t\t");
-        } else {
-            res.append(" (ms)\t");
-        }
-        res.append(getTimesBlocked()).append(" times");
+        res.append(StringMisc.form(getCpuTimeNeeden()));
+        res.append(StringMisc.form(getIoblocking()));
+        res.append(StringMisc.form(getCpuTotal()));
+        res.append(StringMisc.form(getTimesBlocked())).append(" times");
 
         return res.toString();
     }
