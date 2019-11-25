@@ -265,6 +265,6 @@ Round-robin algorithm calls ```receiveQuantum``` for next available ```ActionOnQ
 
 ```ProcessGroup``` passes quantum to next available process via ```receiveQuantum```
 
-```ProcessSimulation``` is a leave version of ```ActionOnQuantum``` so for next available it returns itself and works with time quantum
+```ProcessSimulation``` is a leaf version of ```ActionOnQuantum``` so for next available it returns itself and works with time quantum
 
 Next available for each step is chosen if it's ```ProcessState``` is NOT ``COMPLETED`` or ``IO_BLOCKED`` 
