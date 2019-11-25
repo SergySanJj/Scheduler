@@ -1,7 +1,9 @@
 <processes>
-    <meandev>1100</meandev>
+    <meandev>600</meandev>
     <standdev>400</standdev>
-    <runtime>20000</runtime>
+    <blockMean>50</blockMean>
+    <blockDeviation>10</blockDeviation>
+    <runtime>5000</runtime>
     <quantum>100</quantum>
 
     <group>

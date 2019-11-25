@@ -31,13 +31,13 @@ public class ProcessGroup implements ActionOnQuantum {
     }
 
     @Override
-    public String receiveQuantum(int quantum) {
+    public String receiveQuantum(int quantum, int currentTime) {
         if (allCompleted()) {
             currentState = ProcessState.COMPLETED;
             return "";
         }
 
-        RoundRobinMultiLayer.run(nextAvailable(), quantum);
+        RoundRobinMultiLayer.run(nextAvailable(), quantum, currentTime);
 
         return getStatus();
     }

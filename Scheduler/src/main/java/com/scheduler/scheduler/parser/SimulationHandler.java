@@ -30,6 +30,12 @@ public class SimulationHandler implements Handler<Simulation> {
             case "standdev":
                 currentState = FieldNames.Standdev;
                 break;
+            case "blockMean":
+                currentState = FieldNames.BlockMean;
+                break;
+            case "blockDeviation":
+                currentState = FieldNames.BlockDeviation;
+                break;
             case "runtime":
                 currentState = FieldNames.Runtime;
                 break;
@@ -59,7 +65,8 @@ public class SimulationHandler implements Handler<Simulation> {
                 break;
             case "process":
                 group.addProcess(ProcessSimulation.
-                        create(ioBlocking, simulation.getMeandev(), simulation.getStanddev()));
+                        create(ioBlocking, simulation.getMeandev(), simulation.getStanddev(),
+                                simulation.getBlockMean(), simulation.getBlockDeviation()));
                 break;
         }
     }
@@ -76,6 +83,12 @@ public class SimulationHandler implements Handler<Simulation> {
                 break;
             case Standdev:
                 simulation.setStanddev(Integer.parseInt(information));
+                break;
+            case BlockMean:
+                simulation.setBlockMean(Integer.parseInt(information));
+                break;
+            case BlockDeviation:
+                simulation.setBlockDeviation(Integer.parseInt(information));
                 break;
             case Runtime:
                 simulation.setRuntime(Integer.parseInt(information));

@@ -9,23 +9,25 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     private int cpuTimeNeeden;
     private int ioblocking;
+    private int blockPeriod;
 
     private int timesBlocked;
     private ProcessState currentState;
+    private int lastBlockedTime;
+    private int workedAfterUnblock;
 
     private int cpuTotal;
-
-    private int leftFromPrevious;
 
 
     private ProcessSimulation() {
     }
 
-    public static ProcessSimulation create(int ioblocking, int meandev, int standdev) {
+    public static ProcessSimulation create(int ioblocking, int meandev, int standdev, int blockMean, int blockDeviation) {
         ProcessSimulation processSimulation = new ProcessSimulation();
         processSimulation.setCpuTimeNeeden(distribute(meandev, standdev));
         processSimulation.setCurrentState(ProcessState.PENDING);
         processSimulation.setIoblocking(ioblocking);
+        processSimulation.setBlockPeriod(distribute(blockMean, blockDeviation));
         return processSimulation;
     }
 
@@ -37,27 +39,39 @@ public class ProcessSimulation implements ActionOnQuantum {
     }
 
     @Override
-    public String receiveQuantum(int quantum) {
-        if (currentState == ProcessState.PENDING || currentState == ProcessState.IO_BLOCKED) {
+    public String receiveQuantum(int quantum, int currentTime) {
+        if (currentState == ProcessState.PENDING) {
             currentState = ProcessState.REGISTERED;
+            lastBlockedTime = currentTime;
+            workedAfterUnblock = 0;
         }
-        if (cpuTotal + quantum >= cpuTimeNeeden)
-            quantum = cpuTimeNeeden - cpuTotal;
-        cpuTotal += quantum;
+        while (quantum > 0 && currentState != ProcessState.COMPLETED) {
+            if (currentState == ProcessState.IO_BLOCKED) {
+                if (currentTime >= lastBlockedTime + blockPeriod) {
+                    currentState = ProcessState.REGISTERED;
+                    lastBlockedTime = currentTime;
+                    workedAfterUnblock = 0;
+                }
+            }
 
+            if (cpuTotal + 1 >= cpuTimeNeeden) {
+                currentState = ProcessState.COMPLETED;
+                cpuTotal = cpuTimeNeeden;
+                continue;
+            }
 
-        int blockTimes = (quantum + leftFromPrevious) / ioblocking;
+            workedAfterUnblock++;
+            cpuTotal++;
 
-        timesBlocked += blockTimes;
-        leftFromPrevious = quantum + leftFromPrevious - blockTimes * ioblocking;
+            if (workedAfterUnblock >= ioblocking){
+                currentState = ProcessState.IO_BLOCKED;
+                lastBlockedTime = currentTime;
+                timesBlocked++;
+            }
 
-        if (cpuTotal >= cpuTimeNeeden) {
-            cpuTotal = cpuTimeNeeden;
-            timesBlocked = cpuTotal / ioblocking;
-            currentState = ProcessState.COMPLETED;
-            return getStatus();
-        } else if (leftFromPrevious == 0)
-            currentState = ProcessState.IO_BLOCKED;
+            quantum--;
+            currentTime++;
+        }
 
         return getStatus();
     }
@@ -69,6 +83,7 @@ public class ProcessSimulation implements ActionOnQuantum {
                 append(StringMisc.form(cpuTimeNeeden, 5)).append(" ").
                 append(StringMisc.form(ioblocking, 5)).append(" ").
                 append(StringMisc.form(cpuTotal, 5)).append(" ").
+                append(StringMisc.form(blockPeriod, 5)).append(" ").
                 append(StringMisc.form(timesBlocked, 4)).append(")");
         return res.toString();
     }
@@ -85,6 +100,7 @@ public class ProcessSimulation implements ActionOnQuantum {
         res.append(StringMisc.form(getCpuTimeNeeden()));
         res.append(StringMisc.form(getIoblocking()));
         res.append(StringMisc.form(getCpuTotal()));
+        res.append(StringMisc.form(getBlockPeriod()));
         res.append(StringMisc.form(getTimesBlocked())).append(" times ");
         res.append(StringMisc.form(currentState.toString()));
 
@@ -129,5 +145,13 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     public void setCpuTotal(int cpuTotal) {
         this.cpuTotal = cpuTotal;
+    }
+
+    public int getBlockPeriod() {
+        return blockPeriod;
+    }
+
+    public void setBlockPeriod(int blockPeriod) {
+        this.blockPeriod = blockPeriod;
     }
 }

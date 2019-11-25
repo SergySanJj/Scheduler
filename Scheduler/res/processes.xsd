@@ -12,6 +12,8 @@
             <xs:sequence>
                 <xs:element name="meandev" type="xs:integer" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="standdev" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="blockMean" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="blockDeviation" type="xs:integer" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="runtime" type="xs:integer" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="quantum" type="xs:integer" minOccurs="1" maxOccurs="1"/>
 

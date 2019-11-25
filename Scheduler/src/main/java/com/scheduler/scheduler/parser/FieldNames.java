@@ -4,6 +4,8 @@ public enum FieldNames {
     None,
     Meandev,
     Standdev,
+    BlockMean,
+    BlockDeviation,
     Runtime,
     Quantum,
 

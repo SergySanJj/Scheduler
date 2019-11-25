@@ -12,6 +12,8 @@ public class Simulation implements ActionOnQuantum {
     private int quantum = 50;
     private int meandev;
     private int standdev;
+    private int blockMean;
+    private int blockDeviation;
     private int runtime;
     private List<ProcessGroup> processGroups;
 
@@ -27,6 +29,8 @@ public class Simulation implements ActionOnQuantum {
         res.append(StringMisc.form("Quantum   ")).append(StringMisc.form(quantum)).append("\n");
         res.append(StringMisc.form("Mean      ")).append(StringMisc.form(meandev)).append("\n");
         res.append(StringMisc.form("Deviation ")).append(StringMisc.form(standdev)).append("\n");
+        res.append(StringMisc.form("Block mean")).append(StringMisc.form(blockMean)).append("\n");
+        res.append(StringMisc.form("Block dev ")).append(StringMisc.form(blockDeviation)).append("\n");
         res.append(StringMisc.form("Runtime   ")).append(StringMisc.form(runtime)).append("\n");
 
         res.append(getTitle()).append("\n");
@@ -44,6 +48,7 @@ public class Simulation implements ActionOnQuantum {
                 StringMisc.form("Cpu need", 12) +
                 StringMisc.form("Block", 8) +
                 StringMisc.form("Work", 8) +
+                StringMisc.form("BlockT", 8) +
                 StringMisc.form("Blocked", 15) +
                 StringMisc.form("Status", 0);
     }
@@ -92,6 +97,22 @@ public class Simulation implements ActionOnQuantum {
         processGroups.add(processGroup);
     }
 
+    public int getBlockMean() {
+        return blockMean;
+    }
+
+    public void setBlockMean(int blockMean) {
+        this.blockMean = blockMean;
+    }
+
+    public int getBlockDeviation() {
+        return blockDeviation;
+    }
+
+    public void setBlockDeviation(int blockDeviation) {
+        this.blockDeviation = blockDeviation;
+    }
+
     public int size() {
         return processGroups.size();
     }
@@ -106,8 +127,8 @@ public class Simulation implements ActionOnQuantum {
     }
 
     @Override
-    public String receiveQuantum(int quantum) {
-        RoundRobinMultiLayer.run(nextAvailable(), quantum);
+    public String receiveQuantum(int quantumm, int currentTime) {
+        RoundRobinMultiLayer.run(nextAvailable(), quantum, currentTime);
         return null;
     }
 

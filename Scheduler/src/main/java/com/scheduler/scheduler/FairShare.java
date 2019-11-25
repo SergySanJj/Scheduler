@@ -11,21 +11,22 @@ public class FairShare implements SchedulerAlgorithm {
     @Override
     public Simulation run(Simulation simulation, PrintStream out) {
         int quantum = simulation.getQuantum();
-        int curr = simulation.getRuntime();
+        int runtime = simulation.getRuntime();
 
-        Logger.getLogger("FairShare").log(Level.INFO,"Starting work with processes batch...");
+        Logger.getLogger("FairShare").log(Level.INFO, "Starting work with processes batch...");
 
-        while (curr - quantum > 0) {
-            String step = "IDLE " + StringMisc.form(curr - quantum) + " left";
+        int currTime = 0;
+        while (currTime < runtime) {
+            String step = "IDLE " + StringMisc.form(runtime - currTime) + " left";
             if (simulation.countNotCompleted() != 0)
-                step = RoundRobinMultiLayer.run(simulation, Math.min(curr, quantum));
+                step = RoundRobinMultiLayer.run(simulation, Math.min(runtime - currTime, quantum), currTime);
 
             out.println(step);
 
-            curr -= quantum;
+            currTime += Math.min(runtime - currTime, quantum);
         }
 
-        Logger.getLogger("FairShare").log(Level.INFO,"Finished");
+        Logger.getLogger("FairShare").log(Level.INFO, "Finished");
 
         return simulation;
     }
