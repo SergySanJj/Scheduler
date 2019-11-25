@@ -1,0 +1,24 @@
+Scheduling via: Fair Share algorithm
+Quantum   100     
+Mean      1100    
+Deviation 400     
+Runtime   20000   
+Group System  
+Process 0           844     100     844     8        times COMPLETED
+Process 1           1378    200     1378    6        times COMPLETED
+Group User1   
+Process 0           1253    30      1253    41       times COMPLETED
+Process 1           1810    100     1810    18       times COMPLETED
+Process 2           1238    100     1238    12       times COMPLETED
+Process 3           681     200     681     3        times COMPLETED
+Group User2   
+Process 0           1216    10      1216    121      times COMPLETED
+Process 1           1376    10      1376    137      times COMPLETED
+Process 2           1298    15      1298    86       times COMPLETED
+Process 3           1397    20      1397    69       times COMPLETED
+Group User3   
+Process 0           1052    50      1052    21       times COMPLETED
+Process 1           621     450     621     1        times COMPLETED
+Process 2           1338    2000    1338    0        times COMPLETED
+Process 3           1652    100     1652    16       times COMPLETED
+
