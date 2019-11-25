@@ -17,6 +17,7 @@ public class ProcessSimulation implements ActionOnQuantum {
     private int workedAfterUnblock;
 
     private int cpuTotal;
+    private int quantumsReceived;
 
 
     private ProcessSimulation() {
@@ -28,6 +29,7 @@ public class ProcessSimulation implements ActionOnQuantum {
         processSimulation.setCurrentState(ProcessState.PENDING);
         processSimulation.setIoblocking(ioblocking);
         processSimulation.setBlockPeriod(distribute(blockMean, blockDeviation));
+        processSimulation.quantumsReceived = 0;
         return processSimulation;
     }
 
@@ -40,6 +42,7 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     @Override
     public String receiveQuantum(int quantum, int currentTime) {
+        quantumsReceived++;
         if (currentState == ProcessState.PENDING) {
             currentState = ProcessState.REGISTERED;
             lastBlockedTime = currentTime;
@@ -63,7 +66,7 @@ public class ProcessSimulation implements ActionOnQuantum {
             workedAfterUnblock++;
             cpuTotal++;
 
-            if (workedAfterUnblock >= ioblocking){
+            if (workedAfterUnblock >= ioblocking) {
                 currentState = ProcessState.IO_BLOCKED;
                 lastBlockedTime = currentTime;
                 timesBlocked++;
@@ -102,7 +105,8 @@ public class ProcessSimulation implements ActionOnQuantum {
         res.append(StringMisc.form(getCpuTotal()));
         res.append(StringMisc.form(getBlockPeriod()));
         res.append(StringMisc.form(getTimesBlocked())).append(" times ");
-        res.append(StringMisc.form(currentState.toString()));
+        res.append(StringMisc.form(currentState.toString(),12));
+        res.append(StringMisc.form(quantumsReceived));
 
         return res.toString();
     }
@@ -153,5 +157,13 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     public void setBlockPeriod(int blockPeriod) {
         this.blockPeriod = blockPeriod;
+    }
+
+    public int getQuantumsReceived() {
+        return quantumsReceived;
+    }
+
+    public void setQuantumsReceived(int quantumsReceived) {
+        this.quantumsReceived = quantumsReceived;
     }
 }

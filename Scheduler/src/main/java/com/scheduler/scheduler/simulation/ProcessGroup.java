@@ -109,4 +109,17 @@ public class ProcessGroup implements ActionOnQuantum {
     public void setCurrentState(ProcessState currentState) {
         this.currentState = currentState;
     }
+
+    public Summary getSummary() {
+        Summary summary = new Summary();
+        for (ProcessSimulation proc : processList) {
+            summary.addTotWorked(proc.getCpuTotal());
+            summary.addTotQuantums(proc.getQuantumsReceived());
+            summary.addTotCpuNeed(proc.getCpuTimeNeeden());
+            summary.addTotProcesses(1);
+            if (proc.getCurrentState() == ProcessState.COMPLETED)
+                summary.addTotFinished(1);
+        }
+        return summary;
+    }
 }

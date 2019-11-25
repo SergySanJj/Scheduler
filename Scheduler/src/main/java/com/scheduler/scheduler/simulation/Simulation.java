@@ -39,6 +39,11 @@ public class Simulation implements ActionOnQuantum {
             res.append("Group ").append(StringMisc.form(group.getName())).append("\n");
             res.append(group.toString());
         }
+
+        Summary summary = getSummary();
+        res.append("\nSummary:\n");
+        res.append(summary.getTitle()).append("\n");
+        res.append(summary).append("\n");
         return res.toString();
     }
 
@@ -50,7 +55,8 @@ public class Simulation implements ActionOnQuantum {
                 StringMisc.form("Work", 8) +
                 StringMisc.form("BlockT", 8) +
                 StringMisc.form("Blocked", 15) +
-                StringMisc.form("Status", 0);
+                StringMisc.form("Status", 12) +
+                StringMisc.form("Quantum received", 0);
     }
 
     public int getMeandev() {
@@ -150,5 +156,13 @@ public class Simulation implements ActionOnQuantum {
     private int nextCycled() {
         lastWorked = (lastWorked + 1) % processGroups.size();
         return lastWorked;
+    }
+
+    public Summary getSummary() {
+        List<Summary> summaries = new ArrayList<>();
+        for (ProcessGroup group : processGroups) {
+            summaries.add(group.getSummary());
+        }
+        return Summary.addAll(summaries);
     }
 }
