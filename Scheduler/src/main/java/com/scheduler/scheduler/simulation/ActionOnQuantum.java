@@ -7,5 +7,5 @@ public interface ActionOnQuantum {
 
     String getStatus();
 
-    ActionOnQuantum nextAvailable();
+    ActionOnQuantum nextAvailable(int currentTime);
 }

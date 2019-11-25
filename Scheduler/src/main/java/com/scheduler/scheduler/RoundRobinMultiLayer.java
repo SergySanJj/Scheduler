@@ -6,6 +6,6 @@ import java.util.List;
 
 public class RoundRobinMultiLayer {
     public static String run(ActionOnQuantum root, int quantum, int currentTime) {
-        return root.nextAvailable().receiveQuantum(quantum,currentTime);
+        return root.nextAvailable(currentTime).receiveQuantum(quantum,currentTime);
     }
 }

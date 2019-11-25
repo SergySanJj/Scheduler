@@ -27,7 +27,10 @@ public class Scheduling {
             procFile.createNewFile();
             FileOutputStream procOut = new FileOutputStream(procFile, false);
             PrintStream procStream = new PrintStream(procOut);
+
+            // Algorithm
             fairShare.run(simulation, procStream);
+
             procStream.close();
             procOut.close();
 

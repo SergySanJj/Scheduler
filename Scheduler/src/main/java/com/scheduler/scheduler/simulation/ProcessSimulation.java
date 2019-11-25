@@ -87,12 +87,13 @@ public class ProcessSimulation implements ActionOnQuantum {
                 append(StringMisc.form(ioblocking, 5)).append(" ").
                 append(StringMisc.form(cpuTotal, 5)).append(" ").
                 append(StringMisc.form(blockPeriod, 5)).append(" ").
+                append(StringMisc.form(quantumsReceived, 5)).append(" ").
                 append(StringMisc.form(timesBlocked, 4)).append(")");
         return res.toString();
     }
 
     @Override
-    public ActionOnQuantum nextAvailable() {
+    public ActionOnQuantum nextAvailable(int currentTime) {
         return this;
     }
 
@@ -105,7 +106,7 @@ public class ProcessSimulation implements ActionOnQuantum {
         res.append(StringMisc.form(getCpuTotal()));
         res.append(StringMisc.form(getBlockPeriod()));
         res.append(StringMisc.form(getTimesBlocked())).append(" times ");
-        res.append(StringMisc.form(currentState.toString(),12));
+        res.append(StringMisc.form(currentState.toString(), 12));
         res.append(StringMisc.form(quantumsReceived));
 
         return res.toString();
@@ -133,6 +134,12 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     public void setTimesBlocked(int timesBlocked) {
         this.timesBlocked = timesBlocked;
+    }
+
+    public ProcessState updateCurrentState(int currentTime) {
+        if (currentState == ProcessState.IO_BLOCKED && currentTime >= lastBlockedTime + blockPeriod)
+            currentState = ProcessState.REGISTERED;
+        return currentState;
     }
 
     public ProcessState getCurrentState() {

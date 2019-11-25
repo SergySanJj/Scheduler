@@ -32,30 +32,44 @@ public class ProcessGroup implements ActionOnQuantum {
 
     @Override
     public String receiveQuantum(int quantum, int currentTime) {
-        if (allCompleted()) {
-            currentState = ProcessState.COMPLETED;
-            return "";
-        }
+        updateState(currentTime);
+        if (getCurrentState() == ProcessState.COMPLETED || getCurrentState() == ProcessState.IO_BLOCKED)
+            return "Group " + StringMisc.form(getName()) + StringMisc.form(getCurrentState().toString()) + " skips quantum";
 
-        RoundRobinMultiLayer.run(nextAvailable(), quantum, currentTime);
+        RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
 
         return getStatus();
+    }
+
+    public ProcessState updateState(int currentTime) {
+        if (allUnavailable(currentTime)) {
+            if (count(ProcessState.COMPLETED, currentTime) == processList.size()) {
+                currentState = ProcessState.COMPLETED;
+            } else
+                currentState = ProcessState.IO_BLOCKED;
+        } else currentState = ProcessState.REGISTERED;
+        return currentState;
     }
 
     @Override
     public String getStatus() {
         String processStatus = processList.get(lastWorked).getStatus();
-        String res = "Group " + StringMisc.form(getName()) + " Process " + lastWorked + " " + processStatus;
+        String res = "Group " + StringMisc.form(getName()) + StringMisc.form(getCurrentState().toString()) + " Process " + lastWorked + " " + processStatus;
         return res;
     }
 
     @Override
-    public ActionOnQuantum nextAvailable() {
-        return processList.get(selectNextAvailable());
+    public ActionOnQuantum nextAvailable(int currentTime) {
+        return processList.get(selectNextAvailable(currentTime));
     }
 
-    private int selectNextAvailable() {
-        while (processList.get(nextCycled()).getCurrentState() == ProcessState.COMPLETED) ;
+    private int selectNextAvailable(int currTime) {
+        nextCycled();
+        ProcessState processState = processList.get(lastWorked).updateCurrentState(currTime);
+        while (processState == ProcessState.COMPLETED || processState == ProcessState.IO_BLOCKED) {
+            nextCycled();
+            processState = processList.get(lastWorked).updateCurrentState(currTime);
+        }
         return lastWorked;
     }
 
@@ -64,14 +78,16 @@ public class ProcessGroup implements ActionOnQuantum {
         return lastWorked;
     }
 
-    public boolean allCompleted() {
-        return active() == 0;
+    public boolean allUnavailable(int currentTime) {
+        return count(ProcessState.COMPLETED, currentTime) +
+                count(ProcessState.IO_BLOCKED, currentTime) == processList.size();
     }
 
-    private int active() {
+    private int count(ProcessState state, int currentTime) {
         int res = 0;
         for (ProcessSimulation process : processList) {
-            if (process.getCurrentState() != ProcessState.COMPLETED) {
+            process.updateCurrentState(currentTime);
+            if (process.getCurrentState() == state) {
                 res++;
             }
         }
