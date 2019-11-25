@@ -3,7 +3,7 @@
     <standdev>400</standdev>
     <blockMean>50</blockMean>
     <blockDeviation>10</blockDeviation>
-    <runtime>5000</runtime>
+    <runtime>10000</runtime>
     <quantum>100</quantum>
 
     <group>
