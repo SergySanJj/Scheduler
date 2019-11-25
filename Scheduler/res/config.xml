@@ -1,8 +1,8 @@
 <processes>
     <meandev>1100</meandev>
-    <standdev>510</standdev>
-    <runtime>5000</runtime>
-    <quantum>10</quantum>
+    <standdev>400</standdev>
+    <runtime>20000</runtime>
+    <quantum>100</quantum>
 
     <group>
         <name>System</name>

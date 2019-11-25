@@ -83,7 +83,8 @@ public class ProcessSimulation implements ActionOnQuantum {
         res.append(StringMisc.form(getCpuTimeNeeden()));
         res.append(StringMisc.form(getIoblocking()));
         res.append(StringMisc.form(getCpuTotal()));
-        res.append(StringMisc.form(getTimesBlocked())).append(" times");
+        res.append(StringMisc.form(getTimesBlocked())).append(" times ");
+        res.append(StringMisc.form(currentState.toString()));
 
         return res.toString();
     }

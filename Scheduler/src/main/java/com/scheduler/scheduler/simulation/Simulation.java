@@ -84,6 +84,15 @@ public class Simulation implements ActionOnQuantum {
         return processGroups.size();
     }
 
+    public int countNotCompleted(){
+        int cnt=0;
+        for (ProcessGroup group:processGroups){
+            if (group.getCurrentState()!=ProcessState.COMPLETED)
+                cnt++;
+        }
+        return cnt;
+    }
+
     @Override
     public String receiveQuantum(int quantum) {
         RoundRobinMultiLayer.run(nextAvailable(), quantum);

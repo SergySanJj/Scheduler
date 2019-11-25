@@ -13,7 +13,11 @@ public class StringMisc {
         return form(string, 8);
     }
 
-    public static String form(int a){
+    public static String form(int a) {
         return form(Integer.toString(a));
+    }
+
+    public static String form(int a, int lim) {
+        return form(Integer.toString(a), lim);
     }
 }
