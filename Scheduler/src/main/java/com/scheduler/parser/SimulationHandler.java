@@ -1,11 +1,9 @@
-package com.scheduler.scheduler.parser;
+package com.scheduler.parser;
 
-import com.scheduler.scheduler.simulation.ProcessGroup;
+import com.scheduler.simulation.ProcessGroup;
 import com.parser.Handler;
-import com.scheduler.scheduler.simulation.ProcessSimulation;
-import com.scheduler.scheduler.simulation.Simulation;
-
-import java.util.ArrayList;
+import com.scheduler.simulation.ProcessSimulation;
+import com.scheduler.simulation.Simulation;
 
 public class SimulationHandler implements Handler<Simulation> {
     private Simulation simulation;

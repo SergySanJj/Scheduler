@@ -1,7 +1,7 @@
-package com.scheduler.scheduler;
+package com.scheduler;
 
 import com.StringMisc;
-import com.scheduler.scheduler.simulation.Simulation;
+import com.scheduler.simulation.Simulation;
 
 import java.io.PrintStream;
 import java.util.logging.Level;

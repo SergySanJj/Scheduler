@@ -1,8 +1,6 @@
-package com.scheduler.scheduler;
+package com.scheduler;
 
-import com.scheduler.scheduler.simulation.ActionOnQuantum;
-
-import java.util.List;
+import com.scheduler.simulation.ActionOnQuantum;
 
 public class RoundRobinMultiLayer {
     public static String run(ActionOnQuantum root, int quantum, int currentTime) {

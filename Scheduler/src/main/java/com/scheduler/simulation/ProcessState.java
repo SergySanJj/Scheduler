@@ -1,4 +1,4 @@
-package com.scheduler.scheduler.simulation;
+package com.scheduler.simulation;
 
 public enum ProcessState {
     PENDING,

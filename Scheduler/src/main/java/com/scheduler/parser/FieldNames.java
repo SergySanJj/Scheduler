@@ -1,4 +1,4 @@
-package com.scheduler.scheduler.parser;
+package com.scheduler.parser;
 
 public enum FieldNames {
     None,

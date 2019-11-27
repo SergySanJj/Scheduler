@@ -1,6 +1,4 @@
-package com.scheduler.scheduler.simulation;
-
-import java.util.List;
+package com.scheduler.simulation;
 
 public interface ActionOnQuantum {
     String receiveQuantum(int quantum, int currentTime);

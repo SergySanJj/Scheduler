@@ -1,7 +1,7 @@
-package com.scheduler.scheduler.simulation;
+package com.scheduler.simulation;
 
 import com.StringMisc;
-import com.scheduler.scheduler.RoundRobinMultiLayer;
+import com.scheduler.RoundRobinMultiLayer;
 
 import java.util.ArrayList;
 import java.util.List;

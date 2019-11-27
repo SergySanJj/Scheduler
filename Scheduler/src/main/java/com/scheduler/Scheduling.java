@@ -1,8 +1,8 @@
-package com.scheduler.scheduler;
+package com.scheduler;
 
 import com.parser.StAXParser;
-import com.scheduler.scheduler.parser.SimulationHandler;
-import com.scheduler.scheduler.simulation.Simulation;
+import com.scheduler.parser.SimulationHandler;
+import com.scheduler.simulation.Simulation;
 
 import java.io.File;
 import java.io.FileOutputStream;
