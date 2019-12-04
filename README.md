@@ -91,35 +91,21 @@ Summary-Processes.txt
 GroupName     GroupState ProcessID ProcessState CPUneed     IOblock    CPUworked  BlockTime  QuantsGot  TimesBlocked  
 ``` 
 ```
-Group User1   REGISTERED Process 1 IO_BLOCKED   (600        100        100        55         1          1         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (317        10         100        62         1          91        )
-Group User3   REGISTERED Process 1 COMPLETED    (45         450        45         40         1          0         )
-Group System  REGISTERED Process 1 REGISTERED   (780        200        100        49         1          0         )
-Group User1   REGISTERED Process 2 IO_BLOCKED   (545        100        100        47         1          1         )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (809        15         100        51         1          86        )
-Group User3   REGISTERED Process 2 REGISTERED   (1121       2000       100        32         1          0         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (228        100        100        53         1          1         )
-Group User1   REGISTERED Process 3 REGISTERED   (898        200        100        50         1          0         )
-Group User2   REGISTERED Process 3 IO_BLOCKED   (203        20         100        61         1          81        )
-Group User3   REGISTERED Process 3 IO_BLOCKED   (1221       100        100        45         1          1         )
-Group System  REGISTERED Process 1 IO_BLOCKED   (780        200        200        49         2          1         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (931        30         100        39         1          71        )
-Group User2   REGISTERED Process 0 IO_BLOCKED   (600        10         100        55         1          91        )
-Group User3   REGISTERED Process 0 IO_BLOCKED   (600        50         100        54         1          51        )
-Group System  REGISTERED Process 0 IO_BLOCKED   (228        100        200        53         2          101       )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (600        100        200        55         2          101       )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (317        10         200        62         2          191       )
+Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        100        117        1          1         )
+Group User2   REGISTERED Process 1 IO_BLOCKED   (500        10         100        111        1          10        )
+Group User3   REGISTERED Process 1 REGISTERED   (1013       450        100        99         1          0         )
+Group System  REGISTERED Process 1 REGISTERED   (104        200        100        123        1          0         )
+Group User1   REGISTERED Process 2 IO_BLOCKED   (158        100        100        97         1          1         )
+Group User2   REGISTERED Process 2 IO_BLOCKED   (109        15         100        104        1          6         )
+Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       100        90         1          0         )
+Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        100        101        1          1         )
 ...
-Group User1   REGISTERED Process 0 IO_BLOCKED   (931        30         800        39         8          771       )
-Group User3   REGISTERED Process 2 REGISTERED   (1121       2000       1100       32         11         0         )
-Group User1   REGISTERED Process 3 COMPLETED    (898        200        898        50         9          698       )
-Group User3   REGISTERED Process 3 IO_BLOCKED   (1221       100        1100       45         11         1001      )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (931        30         900        39         9          871       )
-Group User3   REGISTERED Process 2 COMPLETED    (1121       2000       1121       32         12         0         )
-Group User1   REGISTERED Process 0 COMPLETED    (931        30         931        39         10         901       )
-Group User3   REGISTERED Process 3 IO_BLOCKED   (1221       100        1200       45         12         1101      )
+Group User3   REGISTERED Process 1 COMPLETED    (1013       450        1013       99         11         2         )
+Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        1300       117        13         13        )
+Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       1100       90         11         0         )
+Group User3   REGISTERED Process 2 COMPLETED    (1158       2000       1158       90         12         0         )
+Group User1   REGISTERED Process 1 COMPLETED    (1302       100        1302       117        14         13        )
 Group System  COMPLETED skips quantum
-Group User3   REGISTERED Process 3 COMPLETED    (1221       100        1221       45         13         1121      )
 Group System  COMPLETED skips quantum
 Group System  COMPLETED skips quantum
 Group System  COMPLETED skips quantum
@@ -153,32 +139,33 @@ Scheduling via: Fair Share algorithm
 Quantum   100     
 Mean      600     
 Deviation 400     
-Block mean50      
-Block dev 10      
+Block mean100     
+Block dev 20      
 Runtime   10000   
 Process  name   Cpu need    Block   Work    BlockT  Blocked        Status      Quantum received
 Group System  
-Process 0           228     100     228     53      128      times COMPLETED   3       
-Process 1           780     200     780     49      580      times COMPLETED   8       
+Process 0           697     100     697     153     6        times COMPLETED   7       
+Process 1           522     200     522     117     2        times COMPLETED   6       
 Group User1   
-Process 0           931     30      931     39      901      times COMPLETED   10      
-Process 1           600     100     600     55      500      times COMPLETED   6       
-Process 2           545     100     545     47      445      times COMPLETED   6       
-Process 3           898     200     898     50      698      times COMPLETED   9       
+Process 0           1067    30      1067    104     35       times COMPLETED   11      
+Process 1           983     100     983     75      9        times COMPLETED   10      
+Process 2           765     100     765     79      7        times COMPLETED   8       
+Process 3           982     200     982     97      4        times COMPLETED   10      
 Group User2   
-Process 0           600     10      600     55      590      times COMPLETED   6       
-Process 1           317     10      317     62      307      times COMPLETED   4       
-Process 2           809     15      809     51      794      times COMPLETED   9       
-Process 3           203     20      203     61      183      times COMPLETED   3       
+Process 0           712     10      712     96      71       times COMPLETED   8       
+Process 1           743     10      743     87      74       times COMPLETED   8       
+Process 2           1010    15      1010    112     67       times COMPLETED   11      
+Process 3           600     20      600     106     29       times COMPLETED   6       
 Group User3   
-Process 0           600     50      600     54      550      times COMPLETED   6       
-Process 1           45      450     45      40      0        times COMPLETED   1       
-Process 2           1121    2000    1121    32      0        times COMPLETED   12      
-Process 3           1221    100     1221    45      1121     times COMPLETED   13      
+Process 0           13      50      13      84      0        times COMPLETED   1       
+Process 1           133     450     133     106     0        times COMPLETED   2       
+Process 2           269     2000    269     126     0        times COMPLETED   3       
+Process 3           448     100     448     82      4        times COMPLETED   5       
 
 Summary:
 Total           Cpu Need        Cpu Worked      Quantum got     Processes       Finished        
-                8898            8898            96              14              14              
+                8944            8944            96              14              14   
+            
 ```
 
 Summary gives totals for all processes in all groups 
@@ -188,34 +175,34 @@ Summary-Result.txt
 ```
 Scheduling via: Fair Share algorithm
 Quantum   100     
-Mean      600     
+Mean      1000    
 Deviation 400     
-Block mean50      
-Block dev 10      
+Block mean100     
+Block dev 20      
 Runtime   10000   
 Process  name   Cpu need    Block   Work    BlockT  Blocked        Status      Quantum received
 Group System  
-Process 0           1363    100     1363    45      1263     times COMPLETED   14      
-Process 1           735     200     735     46      535      times COMPLETED   8       
+Process 0           979     100     979     77      9        times COMPLETED   10      
+Process 1           839     200     839     116     4        times COMPLETED   9       
 Group User1   
-Process 0           885     30      885     37      855      times COMPLETED   9       
-Process 1           190     100     190     55      90       times COMPLETED   2       
-Process 2           1166    100     900     47      801      times REGISTERED  9       
-Process 3           580     200     580     43      380      times COMPLETED   6       
+Process 0           914     30      600     82      20       times REGISTERED  6       
+Process 1           1007    100     700     91      7        times REGISTERED  7       
+Process 2           623     100     623     115     6        times COMPLETED   7       
+Process 3           692     200     692     106     3        times COMPLETED   7       
 Group User2   
-Process 0           510     10      510     29      500      times COMPLETED   6       
-Process 1           61      10      61      59      51       times COMPLETED   1       
-Process 2           1215    15      1000    45      986      times IO_BLOCKED  10      
-Process 3           847     20      847     70      827      times COMPLETED   9       
+Process 0           499     10      499     79      49       times COMPLETED   5       
+Process 1           1456    10      800     94      80       times IO_BLOCKED  8       
+Process 2           1099    15      700     109     46       times REGISTERED  7       
+Process 3           1047    20      700     110     35       times REGISTERED  7       
 Group User3   
-Process 0           560     50      560     45      510      times COMPLETED   6       
-Process 1           872     450     700     52      251      times REGISTERED  7       
-Process 2           952     2000    700     66      0        times REGISTERED  7       
-Process 3           600     100     600     46      500      times COMPLETED   6       
+Process 0           723     50      600     92      12       times REGISTERED  6       
+Process 1           790     450     700     88      1        times REGISTERED  7       
+Process 2           969     2000    700     69      0        times REGISTERED  7       
+Process 3           1015    100     700     109     7        times IO_BLOCKED  7       
 
 Summary:
 Total           Cpu Need        Cpu Worked      Quantum got     Processes       Finished        
-                10536           9631            100             14              10        
+                12652           9832            100             14              5                     
 ```
 
 
@@ -223,27 +210,21 @@ Summary-Processes.txt
 ```
 GroupName     GroupState ProcessID ProcessState CPUneed     IOblock    CPUworked  BlockTime  QuantsGot  TimesBlocked  
 ``` 
-```
-Group User1   REGISTERED Process 1 IO_BLOCKED   (190        100        100        55         1          1         )
-Group User2   REGISTERED Process 1 COMPLETED    (61         10         61         59         1          51        )
-Group User3   REGISTERED Process 1 REGISTERED   (872        450        100        52         1          0         )
-Group System  REGISTERED Process 1 REGISTERED   (735        200        100        46         1          0         )
-Group User1   REGISTERED Process 2 IO_BLOCKED   (1166       100        100        47         1          1         )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (1215       15         100        45         1          86        )
-Group User3   REGISTERED Process 2 REGISTERED   (952        2000       100        66         1          0         )
+Group User1   REGISTERED Process 1 IO_BLOCKED   (1007       100        100        91         1          1         )
+Group User2   REGISTERED Process 1 IO_BLOCKED   (1456       10         100        94         1          10        )
+Group User3   REGISTERED Process 1 REGISTERED   (790        450        100        88         1          0         )
+Group System  REGISTERED Process 1 REGISTERED   (839        200        100        116        1          0         )
+Group User1   REGISTERED Process 2 IO_BLOCKED   (623        100        100        115        1          1         )
+Group User2   REGISTERED Process 2 IO_BLOCKED   (1099       15         100        109        1          6         )
+Group User3   REGISTERED Process 2 REGISTERED   (969        2000       100        69         1          0         )
+Group System  REGISTERED Process 0 IO_BLOCKED   (979        100        100        77         1          1         )
 ...
-Group User1   REGISTERED Process 2 IO_BLOCKED   (1166       100        800        47         8          701       )
-Group User2   REGISTERED Process 3 IO_BLOCKED   (847        20         800        70         8          781       )
-Group User3   REGISTERED Process 3 COMPLETED    (600        100        600        46         6          500       )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (885        30         800        37         8          771       )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (1215       15         900        45         9          886       )
-Group User3   REGISTERED Process 0 COMPLETED    (560        50         560        45         6          510       )
-Group User1   REGISTERED Process 2 IO_BLOCKED   (1166       100        900        47         9          801       )
-Group User2   REGISTERED Process 3 COMPLETED    (847        20         847        70         9          827       )
-Group User3   REGISTERED Process 1 IO_BLOCKED   (872        450        700        52         7          251       )
-Group User1   REGISTERED Process 0 COMPLETED    (885        30         885        37         9          855       )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (1215       15         1000       45         10         986       )
-Group User3   REGISTERED Process 2 REGISTERED   (952        2000       700        66         7          0         )
+Group User1   REGISTERED Process 2 COMPLETED    (623        100        623        115        7          6         )
+Group User2   REGISTERED Process 3 IO_BLOCKED   (1047       20         700        110        7          35        )
+Group User3   REGISTERED Process 2 REGISTERED   (969        2000       700        69         7          0         )
+Group User1   REGISTERED Process 3 COMPLETED    (692        200        692        106        7          3         )
+Group User2   REGISTERED Process 1 IO_BLOCKED   (1456       10         800        94         8          80        )
+Group User3   REGISTERED Process 3 IO_BLOCKED   (1015       100        700        109        7          7         )
 ```
 
 

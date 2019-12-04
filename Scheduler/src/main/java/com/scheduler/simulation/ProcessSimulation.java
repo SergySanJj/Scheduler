@@ -70,6 +70,7 @@ public class ProcessSimulation implements ActionOnQuantum {
                 currentState = ProcessState.IO_BLOCKED;
                 lastBlockedTime = currentTime;
                 timesBlocked++;
+                workedAfterUnblock=0;
             }
 
             quantum--;
@@ -89,6 +90,7 @@ public class ProcessSimulation implements ActionOnQuantum {
                 append(StringMisc.form(blockPeriod, 10)).append(" ").
                 append(StringMisc.form(quantumsReceived, 10)).append(" ").
                 append(StringMisc.form(timesBlocked, 10)).append(")");
+        //res.append(StringMisc.form(workedAfterUnblock));
         return res.toString();
     }
 
