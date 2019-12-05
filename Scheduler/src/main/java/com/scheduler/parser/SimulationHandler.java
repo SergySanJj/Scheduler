@@ -14,7 +14,6 @@ public class SimulationHandler implements Handler<Simulation> {
 
     public SimulationHandler() {
         simulation = new Simulation();
-        group = new ProcessGroup();
 
         currentState = FieldNames.None;
     }
@@ -42,7 +41,7 @@ public class SimulationHandler implements Handler<Simulation> {
                 break;
             case "group":
                 currentState = FieldNames.Group;
-                group = new ProcessGroup();
+                group = new ProcessGroup(simulation);
                 break;
             case "name":
                 currentState = FieldNames.GroupName;
@@ -63,7 +62,7 @@ public class SimulationHandler implements Handler<Simulation> {
                 break;
             case "process":
                 group.addProcess(ProcessSimulation.
-                        create(ioBlocking, simulation.getMeandev(), simulation.getStanddev(),
+                        create(group, ioBlocking, simulation.getMeandev(), simulation.getStanddev(),
                                 simulation.getBlockMean(), simulation.getBlockDeviation()));
                 break;
         }

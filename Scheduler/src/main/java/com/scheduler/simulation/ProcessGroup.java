@@ -7,15 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessGroup implements ActionOnQuantum {
+    private ActionOnQuantum parent;
     private List<ProcessSimulation> processList;
     private String name;
 
-    private ProcessState currentState = ProcessState.REGISTERED;
+    private ProcessState currentState = ProcessState.READY;
 
     private int lastWorked = 0;
 
-    public ProcessGroup() {
+    public ProcessGroup(ActionOnQuantum parent) {
         processList = new ArrayList<>();
+        this.parent = parent;
     }
 
     @Override
@@ -33,8 +35,6 @@ public class ProcessGroup implements ActionOnQuantum {
     @Override
     public String receiveQuantum(int quantum, int currentTime) {
         updateState(currentTime);
-        if (getCurrentState() == ProcessState.COMPLETED || getCurrentState() == ProcessState.IO_BLOCKED)
-            return "Group " + StringMisc.form(getName()) + StringMisc.form(getCurrentState().toString()) + " skips quantum";
 
         RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
 
@@ -47,28 +47,36 @@ public class ProcessGroup implements ActionOnQuantum {
                 currentState = ProcessState.COMPLETED;
             } else
                 currentState = ProcessState.IO_BLOCKED;
-        } else currentState = ProcessState.REGISTERED;
+        } else currentState = ProcessState.READY;
         return currentState;
     }
 
     @Override
     public String getStatus() {
         String processStatus = processList.get(lastWorked).getStatus();
-        String res = "Group " + StringMisc.form(getName()) + StringMisc.form(getCurrentState().toString()) + " Process " + lastWorked + " " + processStatus;
+        String res = "Group " + StringMisc.form(getName())  + " Process " + lastWorked + " " + processStatus;
         return res;
     }
 
     @Override
     public ActionOnQuantum nextAvailable(int currentTime) {
-        return processList.get(selectNextAvailable(currentTime));
+        int next = selectNextAvailable(currentTime);
+        if (next==-1)
+            return parent;
+        return processList.get(next);
     }
 
     private int selectNextAvailable(int currTime) {
         nextCycled();
         ProcessState processState = processList.get(lastWorked).updateCurrentState(currTime);
-        while (processState == ProcessState.COMPLETED || processState == ProcessState.IO_BLOCKED) {
+        int tried = 0;
+        while (processState == ProcessState.COMPLETED || processState == ProcessState.IO_BLOCKED && tried < processList.size()) {
             nextCycled();
             processState = processList.get(lastWorked).updateCurrentState(currTime);
+            tried++;
+        }
+        if (tried>=processList.size()){
+            return -1;
         }
         return lastWorked;
     }

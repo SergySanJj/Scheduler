@@ -2,7 +2,7 @@ package com.scheduler.simulation;
 
 public enum ProcessState {
     PENDING,
-    REGISTERED,
+    READY,
     IO_BLOCKED,
     COMPLETED
 }

@@ -5,6 +5,7 @@ import com.StringMisc;
 import java.util.Random;
 
 public class ProcessSimulation implements ActionOnQuantum {
+    private ActionOnQuantum parent;
     private static Random random = new Random();
 
     private int cpuTimeNeeden;
@@ -20,11 +21,12 @@ public class ProcessSimulation implements ActionOnQuantum {
     private int quantumsReceived;
 
 
-    private ProcessSimulation() {
+    private ProcessSimulation(ActionOnQuantum parent) {
+        this.parent = parent;
     }
 
-    public static ProcessSimulation create(int ioblocking, int meandev, int standdev, int blockMean, int blockDeviation) {
-        ProcessSimulation processSimulation = new ProcessSimulation();
+    public static ProcessSimulation create(ActionOnQuantum parentGroup, int ioblocking, int meandev, int standdev, int blockMean, int blockDeviation) {
+        ProcessSimulation processSimulation = new ProcessSimulation(parentGroup);
         processSimulation.setCpuTimeNeeden(distribute(meandev, standdev));
         processSimulation.setCurrentState(ProcessState.PENDING);
         processSimulation.setIoblocking(ioblocking);
@@ -44,14 +46,14 @@ public class ProcessSimulation implements ActionOnQuantum {
     public String receiveQuantum(int quantum, int currentTime) {
         quantumsReceived++;
         if (currentState == ProcessState.PENDING) {
-            currentState = ProcessState.REGISTERED;
+            currentState = ProcessState.READY;
             lastBlockedTime = currentTime;
             workedAfterUnblock = 0;
         }
         while (quantum > 0 && currentState != ProcessState.COMPLETED) {
             if (currentState == ProcessState.IO_BLOCKED) {
                 if (currentTime >= lastBlockedTime + blockPeriod) {
-                    currentState = ProcessState.REGISTERED;
+                    currentState = ProcessState.READY;
                     lastBlockedTime = currentTime;
                     workedAfterUnblock = 0;
                 }
@@ -70,7 +72,12 @@ public class ProcessSimulation implements ActionOnQuantum {
                 currentState = ProcessState.IO_BLOCKED;
                 lastBlockedTime = currentTime;
                 timesBlocked++;
-                workedAfterUnblock=0;
+                workedAfterUnblock = 0;
+                quantum--;
+                currentTime++;
+                if (quantum > 0)
+                    parent.nextAvailable(currentTime).receiveQuantum(quantum, currentTime);
+                return getStatus();
             }
 
             quantum--;
@@ -140,7 +147,7 @@ public class ProcessSimulation implements ActionOnQuantum {
 
     public ProcessState updateCurrentState(int currentTime) {
         if (currentState == ProcessState.IO_BLOCKED && currentTime >= lastBlockedTime + blockPeriod)
-            currentState = ProcessState.REGISTERED;
+            currentState = ProcessState.READY;
         return currentState;
     }
 

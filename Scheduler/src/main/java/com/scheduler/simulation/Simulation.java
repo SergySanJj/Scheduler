@@ -132,6 +132,8 @@ public class Simulation implements ActionOnQuantum {
 
     @Override
     public String receiveQuantum(int quantumm, int currentTime) {
+        if (quantumm<=0)
+            return "";
         RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
         return null;
     }
@@ -143,14 +145,25 @@ public class Simulation implements ActionOnQuantum {
 
     @Override
     public ActionOnQuantum nextAvailable(int currentTime) {
-        return processGroups.get(selectNextAvailable(currentTime));
+        int next = selectNextAvailable(currentTime);
+        if (next == -1)
+            return SystemIdle.get(this);
+        return processGroups.get(next);
     }
 
     private int selectNextAvailable(int currentTime) {
-        if (allUnavailable(currentTime))
+        if (allUnavailable(currentTime)) {
             lastWorked = 0;
-        else
-            while (processGroups.get(nextCycled()).allUnavailable(currentTime)) ;
+            return -1;
+        } else {
+            int checkCount = 0;
+            while (processGroups.get(nextCycled()).allUnavailable(currentTime) && checkCount < processGroups.size()) {
+                checkCount++;
+            }
+            if (checkCount >= processGroups.size()) {
+                return -1;
+            }
+        }
         return lastWorked;
     }
 
