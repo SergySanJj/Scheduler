@@ -2,7 +2,7 @@ package com.scheduler;
 
 import com.parser.StAXParser;
 import com.scheduler.parser.SimulationHandler;
-import com.scheduler.simulation.Simulation;
+import com.scheduler.simulation.SimulationController;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ public class Scheduling {
     private static final String schema = "res/processes.xsd";
     private static final String defaultConfig = "res/defaultConfig.xml";
     private static String config;
-    private static Simulation simulation;
+    private static SimulationController simulationController;
 
     public static void main(String[] args) {
         tryLoadConfig(args);
@@ -30,7 +30,7 @@ public class Scheduling {
             PrintStream procStream = new PrintStream(procOut);
 
             // Algorithm
-            schedulerAlgorithm.run(simulation, procStream);
+            schedulerAlgorithm.run(simulationController, procStream);
 
             procStream.close();
             procOut.close();
@@ -38,7 +38,7 @@ public class Scheduling {
             FileOutputStream resOut = new FileOutputStream(resFile, false);
             PrintStream resStream = new PrintStream(resOut);
             resStream.println("Scheduling via: Fair Share algorithm");
-            resStream.println(simulation);
+            resStream.println(simulationController);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,12 +61,12 @@ public class Scheduling {
             config = args[0];
         }
 
-        StAXParser<Simulation> parser = new StAXParser<>(new SimulationHandler(), schema);
-        simulation = parser.parse(config);
-        if (simulation == null){
+        StAXParser<SimulationController> parser = new StAXParser<>(new SimulationHandler(), schema);
+        simulationController = parser.parse(config);
+        if (simulationController == null){
             Logger.getLogger("main").log(Level.INFO, "File " + config + " can't be parsed" );
             loadDefaoultConfig();
-            simulation = parser.parse(defaultConfig);}
+            simulationController = parser.parse(defaultConfig);}
     }
 
     private static void loadDefaoultConfig() {

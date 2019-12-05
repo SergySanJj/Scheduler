@@ -1,7 +1,7 @@
 package com.scheduler;
 
 import com.StringMisc;
-import com.scheduler.simulation.Simulation;
+import com.scheduler.simulation.SimulationController;
 
 import java.io.PrintStream;
 import java.util.logging.Level;
@@ -9,17 +9,17 @@ import java.util.logging.Logger;
 
 public class FairShare implements SchedulerAlgorithm {
     @Override
-    public Simulation run(Simulation simulation, PrintStream out) {
-        int quantum = simulation.getQuantum();
-        int runtime = simulation.getRuntime();
+    public SimulationController run(SimulationController simulationController, PrintStream out) {
+        int quantum = simulationController.getQuantum();
+        int runtime = simulationController.getRuntime();
 
         Logger.getLogger("FairShare").log(Level.INFO, "Starting work with processes batch...");
 
         int currTime = 0;
         while (currTime < runtime) {
             String step = "IDLE " + StringMisc.form(runtime - currTime) + " left";
-            if (simulation.countNotCompleted() != 0)
-                step = RoundRobinMultiLayer.run(simulation, Math.min(runtime - currTime, quantum), currTime);
+            if (simulationController.countNotCompleted() != 0)
+                step = RoundRobinMultiLayer.run(simulationController, Math.min(runtime - currTime, quantum), currTime);
 
             out.println(step);
 
@@ -28,6 +28,6 @@ public class FairShare implements SchedulerAlgorithm {
 
         Logger.getLogger("FairShare").log(Level.INFO, "Finished");
 
-        return simulation;
+        return simulationController;
     }
 }

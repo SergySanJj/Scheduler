@@ -4,7 +4,7 @@ import com.StringMisc;
 
 import java.util.Random;
 
-public class ProcessSimulation implements ActionOnQuantum {
+public class ProcessController implements ActionOnQuantum {
     private ActionOnQuantum parent;
     private static Random random = new Random();
 
@@ -21,18 +21,18 @@ public class ProcessSimulation implements ActionOnQuantum {
     private int quantumsReceived;
 
 
-    private ProcessSimulation(ActionOnQuantum parent) {
+    private ProcessController(ActionOnQuantum parent) {
         this.parent = parent;
     }
 
-    public static ProcessSimulation create(ActionOnQuantum parentGroup, int ioblocking, int meandev, int standdev, int blockMean, int blockDeviation) {
-        ProcessSimulation processSimulation = new ProcessSimulation(parentGroup);
-        processSimulation.setCpuTimeNeeden(distribute(meandev, standdev));
-        processSimulation.setCurrentState(ProcessState.PENDING);
-        processSimulation.setIoblocking(ioblocking);
-        processSimulation.setBlockPeriod(distribute(blockMean, blockDeviation));
-        processSimulation.quantumsReceived = 0;
-        return processSimulation;
+    public static ProcessController create(ActionOnQuantum parentGroup, int ioblocking, int meandev, int standdev, int blockMean, int blockDeviation) {
+        ProcessController processController = new ProcessController(parentGroup);
+        processController.setCpuTimeNeeden(distribute(meandev, standdev));
+        processController.setCurrentState(ProcessState.PENDING);
+        processController.setIoblocking(ioblocking);
+        processController.setBlockPeriod(distribute(blockMean, blockDeviation));
+        processController.quantumsReceived = 0;
+        return processController;
     }
 
     private static int distribute(int avg, int deviation) {

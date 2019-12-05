@@ -1,9 +1,9 @@
 package com.scheduler;
 
-import com.scheduler.simulation.Simulation;
+import com.scheduler.simulation.SimulationController;
 
 import java.io.PrintStream;
 
 public interface SchedulerAlgorithm {
-    Simulation run(Simulation simulation, PrintStream out);
+    SimulationController run(SimulationController simulationController, PrintStream out);
 }

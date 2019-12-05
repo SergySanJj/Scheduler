@@ -6,16 +6,16 @@ import com.scheduler.RoundRobinMultiLayer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcessGroup implements ActionOnQuantum {
+public class GroupController implements ActionOnQuantum {
     private ActionOnQuantum parent;
-    private List<ProcessSimulation> processList;
+    private List<ProcessController> processList;
     private String name;
 
     private ProcessState currentState = ProcessState.READY;
 
     private int lastWorked = 0;
 
-    public ProcessGroup(ActionOnQuantum parent) {
+    public GroupController(ActionOnQuantum parent) {
         processList = new ArrayList<>();
         this.parent = parent;
     }
@@ -24,7 +24,7 @@ public class ProcessGroup implements ActionOnQuantum {
     public String toString() {
         StringBuilder res = new StringBuilder();
         int i = 0;
-        for (ProcessSimulation process : processList) {
+        for (ProcessController process : processList) {
             res.append("Process ").append(StringMisc.form(i)).append(" ").append(process.toString()).append("\n");
             i++;
         }
@@ -93,7 +93,7 @@ public class ProcessGroup implements ActionOnQuantum {
 
     private int count(ProcessState state, int currentTime) {
         int res = 0;
-        for (ProcessSimulation process : processList) {
+        for (ProcessController process : processList) {
             process.updateCurrentState(currentTime);
             if (process.getCurrentState() == state) {
                 res++;
@@ -102,11 +102,11 @@ public class ProcessGroup implements ActionOnQuantum {
         return res;
     }
 
-    public List<ProcessSimulation> getProcessList() {
+    public List<ProcessController> getProcessList() {
         return processList;
     }
 
-    public void setProcessList(List<ProcessSimulation> processList) {
+    public void setProcessList(List<ProcessController> processList) {
         this.processList = processList;
     }
 
@@ -118,8 +118,8 @@ public class ProcessGroup implements ActionOnQuantum {
         this.name = name;
     }
 
-    public void addProcess(ProcessSimulation processSimulation) {
-        processList.add(processSimulation);
+    public void addProcess(ProcessController processController) {
+        processList.add(processController);
     }
 
     public int size() {
@@ -136,7 +136,7 @@ public class ProcessGroup implements ActionOnQuantum {
 
     public Summary getSummary() {
         Summary summary = new Summary();
-        for (ProcessSimulation proc : processList) {
+        for (ProcessController proc : processList) {
             summary.addTotWorked(proc.getCpuTotal());
             summary.addTotQuantums(proc.getQuantumsReceived());
             summary.addTotCpuNeed(proc.getCpuTimeNeeden());

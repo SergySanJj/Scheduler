@@ -1,19 +1,19 @@
 package com.scheduler.parser;
 
-import com.scheduler.simulation.ProcessGroup;
+import com.scheduler.simulation.GroupController;
 import com.parser.Handler;
-import com.scheduler.simulation.ProcessSimulation;
-import com.scheduler.simulation.Simulation;
+import com.scheduler.simulation.ProcessController;
+import com.scheduler.simulation.SimulationController;
 
-public class SimulationHandler implements Handler<Simulation> {
-    private Simulation simulation;
-    private ProcessGroup group;
+public class SimulationHandler implements Handler<SimulationController> {
+    private SimulationController simulationController;
+    private GroupController group;
     private int ioBlocking;
 
     FieldNames currentState;
 
     public SimulationHandler() {
-        simulation = new Simulation();
+        simulationController = new SimulationController();
 
         currentState = FieldNames.None;
     }
@@ -41,7 +41,7 @@ public class SimulationHandler implements Handler<Simulation> {
                 break;
             case "group":
                 currentState = FieldNames.Group;
-                group = new ProcessGroup(simulation);
+                group = new GroupController(simulationController);
                 break;
             case "name":
                 currentState = FieldNames.GroupName;
@@ -58,12 +58,12 @@ public class SimulationHandler implements Handler<Simulation> {
     public void onTagEnd(String tag) {
         switch (tag) {
             case "group":
-                simulation.addGroup(group);
+                simulationController.addGroup(group);
                 break;
             case "process":
-                group.addProcess(ProcessSimulation.
-                        create(group, ioBlocking, simulation.getMeandev(), simulation.getStanddev(),
-                                simulation.getBlockMean(), simulation.getBlockDeviation()));
+                group.addProcess(ProcessController.
+                        create(group, ioBlocking, simulationController.getMeandev(), simulationController.getStanddev(),
+                                simulationController.getBlockMean(), simulationController.getBlockDeviation()));
                 break;
         }
     }
@@ -76,22 +76,22 @@ public class SimulationHandler implements Handler<Simulation> {
     public void setTag(String information) {
         switch (currentState) {
             case Meandev:
-                simulation.setMeandev(Integer.parseInt(information));
+                simulationController.setMeandev(Integer.parseInt(information));
                 break;
             case Standdev:
-                simulation.setStanddev(Integer.parseInt(information));
+                simulationController.setStanddev(Integer.parseInt(information));
                 break;
             case BlockMean:
-                simulation.setBlockMean(Integer.parseInt(information));
+                simulationController.setBlockMean(Integer.parseInt(information));
                 break;
             case BlockDeviation:
-                simulation.setBlockDeviation(Integer.parseInt(information));
+                simulationController.setBlockDeviation(Integer.parseInt(information));
                 break;
             case Runtime:
-                simulation.setRuntime(Integer.parseInt(information));
+                simulationController.setRuntime(Integer.parseInt(information));
                 break;
             case Quantum:
-                simulation.setQuantum(Integer.parseInt(information));
+                simulationController.setQuantum(Integer.parseInt(information));
                 break;
             case Process:
                 ioBlocking = Integer.parseInt(information);
@@ -107,7 +107,7 @@ public class SimulationHandler implements Handler<Simulation> {
     }
 
     @Override
-    public Simulation getParseResult() {
-        return simulation;
+    public SimulationController getParseResult() {
+        return simulationController;
     }
 }

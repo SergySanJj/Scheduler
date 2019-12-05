@@ -6,19 +6,19 @@ import com.scheduler.RoundRobinMultiLayer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Simulation implements ActionOnQuantum {
+public class SimulationController implements ActionOnQuantum {
     private int quantum = 50;
     private int meandev;
     private int standdev;
     private int blockMean;
     private int blockDeviation;
     private int runtime;
-    private List<ProcessGroup> processGroups;
+    private List<GroupController> groupControllers;
 
     private int lastWorked = 0;
 
-    public Simulation() {
-        processGroups = new ArrayList<>();
+    public SimulationController() {
+        groupControllers = new ArrayList<>();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Simulation implements ActionOnQuantum {
 
         res.append(getTitle()).append("\n");
 
-        for (ProcessGroup group : processGroups) {
+        for (GroupController group : groupControllers) {
             res.append("Group ").append(StringMisc.form(group.getName())).append("\n");
             res.append(group.toString());
         }
@@ -81,12 +81,12 @@ public class Simulation implements ActionOnQuantum {
         this.runtime = runtime;
     }
 
-    public List<ProcessGroup> getProcessGroups() {
-        return processGroups;
+    public List<GroupController> getGroupControllers() {
+        return groupControllers;
     }
 
-    public void setProcessGroups(List<ProcessGroup> processGroups) {
-        this.processGroups = processGroups;
+    public void setGroupControllers(List<GroupController> groupControllers) {
+        this.groupControllers = groupControllers;
     }
 
     public int getQuantum() {
@@ -97,8 +97,8 @@ public class Simulation implements ActionOnQuantum {
         this.quantum = quantum;
     }
 
-    public void addGroup(ProcessGroup processGroup) {
-        processGroups.add(processGroup);
+    public void addGroup(GroupController groupController) {
+        groupControllers.add(groupController);
     }
 
     public int getBlockMean() {
@@ -118,12 +118,12 @@ public class Simulation implements ActionOnQuantum {
     }
 
     public int size() {
-        return processGroups.size();
+        return groupControllers.size();
     }
 
     public int countNotCompleted() {
         int cnt = 0;
-        for (ProcessGroup group : processGroups) {
+        for (GroupController group : groupControllers) {
             if (group.getCurrentState() != ProcessState.COMPLETED)
                 cnt++;
         }
@@ -140,7 +140,7 @@ public class Simulation implements ActionOnQuantum {
 
     @Override
     public String getStatus() {
-        return processGroups.get(lastWorked).getStatus();
+        return groupControllers.get(lastWorked).getStatus();
     }
 
     @Override
@@ -148,7 +148,7 @@ public class Simulation implements ActionOnQuantum {
         int next = selectNextAvailable(currentTime);
         if (next == -1)
             return SystemIdle.get(this);
-        return processGroups.get(next);
+        return groupControllers.get(next);
     }
 
     private int selectNextAvailable(int currentTime) {
@@ -157,10 +157,10 @@ public class Simulation implements ActionOnQuantum {
             return -1;
         } else {
             int checkCount = 0;
-            while (processGroups.get(nextCycled()).allUnavailable(currentTime) && checkCount < processGroups.size()) {
+            while (groupControllers.get(nextCycled()).allUnavailable(currentTime) && checkCount < groupControllers.size()) {
                 checkCount++;
             }
-            if (checkCount >= processGroups.size()) {
+            if (checkCount >= groupControllers.size()) {
                 return -1;
             }
         }
@@ -168,7 +168,7 @@ public class Simulation implements ActionOnQuantum {
     }
 
     private boolean allUnavailable(int currentTime) {
-        for (ProcessGroup group : processGroups) {
+        for (GroupController group : groupControllers) {
             if (!group.allUnavailable(currentTime))
                 return false;
         }
@@ -176,13 +176,13 @@ public class Simulation implements ActionOnQuantum {
     }
 
     private int nextCycled() {
-        lastWorked = (lastWorked + 1) % processGroups.size();
+        lastWorked = (lastWorked + 1) % groupControllers.size();
         return lastWorked;
     }
 
     public Summary getSummary() {
         List<Summary> summaries = new ArrayList<>();
-        for (ProcessGroup group : processGroups) {
+        for (GroupController group : groupControllers) {
             summaries.add(group.getSummary());
         }
         return Summary.addAll(summaries);
