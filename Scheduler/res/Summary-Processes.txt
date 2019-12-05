@@ -1,100 +1,212 @@
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        100        117        1          1         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (500        10         100        111        1          10        )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        100        99         1          0         )
-Group System  REGISTERED Process 1 REGISTERED   (104        200        100        123        1          0         )
-Group User1   REGISTERED Process 2 IO_BLOCKED   (158        100        100        97         1          1         )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (109        15         100        104        1          6         )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       100        90         1          0         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        100        101        1          1         )
-Group User1   REGISTERED Process 3 COMPLETED    (16         200        16         68         1          0         )
-Group User2   REGISTERED Process 3 COMPLETED    (17         20         17         96         1          0         )
-Group User3   REGISTERED Process 3 IO_BLOCKED   (179        100        100        124        1          1         )
-Group System  REGISTERED Process 1 COMPLETED    (104        200        104        123        2          0         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         100        108        1          3         )
-Group User2   REGISTERED Process 0 IO_BLOCKED   (198        10         100        77         1          10        )
-Group User3   REGISTERED Process 0 IO_BLOCKED   (327        50         100        78         1          2         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        200        101        2          2         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        200        117        2          2         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (500        10         200        111        2          20        )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        200        99         2          0         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        300        101        3          3         )
-Group User1   REGISTERED Process 2 COMPLETED    (158        100        158        97         2          1         )
-Group User2   REGISTERED Process 2 COMPLETED    (109        15         109        104        2          7         )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       200        90         2          0         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        400        101        4          4         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         200        108        2          6         )
-Group User2   REGISTERED Process 0 COMPLETED    (198        10         198        77         2          19        )
-Group User3   REGISTERED Process 3 COMPLETED    (179        100        179        124        2          1         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        500        101        5          5         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        300        117        3          3         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (500        10         300        111        3          30        )
-Group User3   REGISTERED Process 0 IO_BLOCKED   (327        50         200        78         2          4         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (633        100        600        101        6          6         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         300        108        3          10        )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (500        10         400        111        4          40        )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        300        99         3          0         )
-Group System  REGISTERED Process 0 COMPLETED    (633        100        633        101        7          6         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        400        117        4          4         )
-Group User2   REGISTERED Process 1 COMPLETED    (500        10         500        111        5          49        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       300        90         3          0         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         400        108        4          13        )
-Group User3   REGISTERED Process 0 IO_BLOCKED   (327        50         300        78         3          6         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        500        117        5          5         )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        400        99         4          0         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         500        108        5          16        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       400        90         4          0         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        600        117        6          6         )
-Group User3   REGISTERED Process 0 COMPLETED    (327        50         327        78         4          6         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         600        108        6          20        )
-Group User3   REGISTERED Process 1 IO_BLOCKED   (1013       450        500        99         5          1         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        700        117        7          7         )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       500        90         5          0         )
-Group User1   REGISTERED Process 0 IO_BLOCKED   (742        30         700        108        7          23        )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        600        99         6          1         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        800        117        8          8         )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       600        90         6          0         )
-Group User1   REGISTERED Process 0 COMPLETED    (742        30         742        108        8          24        )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        700        99         7          1         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        900        117        9          9         )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       700        90         7          0         )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        800        99         8          1         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        1000       117        10         10        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       800        90         8          0         )
-Group User3   REGISTERED Process 1 IO_BLOCKED   (1013       450        900        99         9          2         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        1100       117        11         11        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       900        90         9          0         )
-Group User3   REGISTERED Process 1 REGISTERED   (1013       450        1000       99         10         2         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        1200       117        12         12        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       1000       90         10         0         )
-Group User3   REGISTERED Process 1 COMPLETED    (1013       450        1013       99         11         2         )
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1302       100        1300       117        13         13        )
-Group User3   REGISTERED Process 2 REGISTERED   (1158       2000       1100       90         11         0         )
-Group User3   REGISTERED Process 2 COMPLETED    (1158       2000       1158       90         12         0         )
-Group User1   REGISTERED Process 1 COMPLETED    (1302       100        1302       117        14         13        )
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
-Group System  COMPLETED skips quantum
+Group User1    Process 1 IO_BLOCKED   (722        100        100        109        1          1         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         10         114        1          1         )
+Group User2    Process 2 IO_BLOCKED   (252        15         15         91         1          1         )
+Group User2    Process 3 IO_BLOCKED   (500        20         20         113        1          1         )
+Group User2    Process 0 IO_BLOCKED   (500        10         10         85         1          1         )
+Group User3    Process 1 READY        (1159       450        100        101        1          0         )
+Group System   Process 1 READY        (946        200        100        106        1          0         )
+Group User1    Process 2 IO_BLOCKED   (251        100        100        109        1          1         )
+Group User2    Process 2 IO_BLOCKED   (252        15         30         91         2          2         )
+Group User2    Process 3 IO_BLOCKED   (500        20         40         113        2          2         )
+Group User2    Process 0 IO_BLOCKED   (500        10         20         85         2          2         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         20         114        2          2         )
+Group User3    Process 2 READY        (397        2000       100        119        1          0         )
+Group System   Process 0 IO_BLOCKED   (628        100        100        108        1          1         )
+Group User1    Process 3 READY        (303        200        100        81         1          0         )
+Group User2    Process 3 IO_BLOCKED   (500        20         60         113        3          3         )
+Group User2    Process 0 IO_BLOCKED   (500        10         30         85         3          3         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         30         114        3          3         )
+Group User2    Process 2 IO_BLOCKED   (252        15         45         91         3          3         )
+Group User3    Process 3 IO_BLOCKED   (245        100        100        52         1          1         )
+Group System   Process 1 IO_BLOCKED   (946        200        200        106        2          1         )
+Group User1    Process 0 IO_BLOCKED   (511        30         30         76         1          1         )
+Group User1    Process 1 READY        (722        100        170        109        2          1         )
+Group User2    Process 0 IO_BLOCKED   (500        10         40         85         4          4         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         40         114        4          4         )
+Group User2    Process 2 IO_BLOCKED   (252        15         60         91         4          4         )
+Group User2    Process 3 IO_BLOCKED   (500        20         80         113        4          4         )
+Group User3    Process 0 IO_BLOCKED   (556        50         50         104        1          1         )
+Group User3    Process 1 READY        (1159       450        150        101        2          0         )
+Group System   Process 0 IO_BLOCKED   (628        100        200        108        2          2         )
+Group User1    Process 2 IO_BLOCKED   (251        100        200        109        2          2         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         50         114        5          5         )
+Group User2    Process 2 IO_BLOCKED   (252        15         75         91         5          5         )
+Group User2    Process 3 IO_BLOCKED   (500        20         100        113        5          5         )
+Group User2    Process 0 IO_BLOCKED   (500        10         50         85         5          5         )
+Group User3    Process 2 READY        (397        2000       200        119        2          0         )
+Group System   Process 1 READY        (946        200        300        106        3          1         )
+Group User1    Process 3 IO_BLOCKED   (303        200        200        81         2          1         )
+Group User2    Process 2 IO_BLOCKED   (252        15         90         91         6          6         )
+Group User2    Process 3 IO_BLOCKED   (500        20         120        113        6          6         )
+Group User2    Process 0 IO_BLOCKED   (500        10         60         85         6          6         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         60         114        6          6         )
+Group User3    Process 3 IO_BLOCKED   (245        100        200        52         2          2         )
+Group System   Process 0 IO_BLOCKED   (628        100        300        108        3          3         )
+Group User1    Process 0 IO_BLOCKED   (511        30         60         76         2          2         )
+Group User1    Process 1 IO_BLOCKED   (722        100        200        109        3          2         )
+Group User1    Process 2 READY        (251        100        240        109        3          2         )
+Group User2    Process 3 IO_BLOCKED   (500        20         140        113        7          7         )
+Group User2    Process 0 IO_BLOCKED   (500        10         70         85         7          7         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         70         114        7          7         )
+Group User2    Process 2 IO_BLOCKED   (252        15         105        91         7          7         )
+Group User3    Process 0 IO_BLOCKED   (556        50         100        104        2          2         )
+Group User3    Process 1 READY        (1159       450        200        101        3          0         )
+Group System   Process 1 IO_BLOCKED   (946        200        400        106        4          2         )
+Group User1    Process 3 READY        (303        200        300        81         3          1         )
+Group User2    Process 0 IO_BLOCKED   (500        10         80         85         8          8         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         80         114        8          8         )
+Group User2    Process 2 IO_BLOCKED   (252        15         120        91         8          8         )
+Group User2    Process 3 IO_BLOCKED   (500        20         160        113        8          8         )
+Group User3    Process 2 READY        (397        2000       300        119        3          0         )
+Group System   Process 0 IO_BLOCKED   (628        100        400        108        4          4         )
+Group User1    Process 0 IO_BLOCKED   (511        30         90         76         3          3         )
+Group User1    Process 1 READY        (722        100        270        109        4          2         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         90         114        9          9         )
+Group User2    Process 2 IO_BLOCKED   (252        15         135        91         9          9         )
+Group User2    Process 3 IO_BLOCKED   (500        20         180        113        9          9         )
+Group User2    Process 0 IO_BLOCKED   (500        10         90         85         9          9         )
+Group User3    Process 3 COMPLETED    (245        100        245        52         3          2         )
+Group System   Process 1 READY        (946        200        500        106        5          2         )
+Group User1    Process 2 COMPLETED    (251        100        251        109        4          2         )
+Group User2    Process 2 IO_BLOCKED   (252        15         150        91         10         10        )
+Group User2    Process 3 IO_BLOCKED   (500        20         200        113        10         10        )
+Group User2    Process 0 IO_BLOCKED   (500        10         100        85         10         10        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         100        114        10         10        )
+Group User3    Process 0 IO_BLOCKED   (556        50         150        104        3          3         )
+Group User3    Process 1 READY        (1159       450        250        101        4          0         )
+Group System   Process 0 IO_BLOCKED   (628        100        500        108        5          5         )
+Group User1    Process 3 COMPLETED    (303        200        303        81         4          1         )
+Group User2    Process 3 IO_BLOCKED   (500        20         220        113        11         11        )
+Group User2    Process 0 IO_BLOCKED   (500        10         110        85         11         11        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         110        114        11         11        )
+Group User2    Process 2 IO_BLOCKED   (252        15         165        91         11         11        )
+Group User3    Process 2 COMPLETED    (397        2000       397        119        4          0         )
+Group System   Process 1 IO_BLOCKED   (946        200        600        106        6          3         )
+Group User1    Process 0 IO_BLOCKED   (511        30         120        76         4          4         )
+Group User1    Process 1 IO_BLOCKED   (722        100        300        109        5          3         )
+Group User2    Process 0 IO_BLOCKED   (500        10         120        85         12         12        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         120        114        12         12        )
+Group User2    Process 2 IO_BLOCKED   (252        15         180        91         12         12        )
+Group User2    Process 3 IO_BLOCKED   (500        20         240        113        12         12        )
+Group User3    Process 0 IO_BLOCKED   (556        50         200        104        4          4         )
+Group User3    Process 1 READY        (1159       450        300        101        5          0         )
+Group System   Process 0 IO_BLOCKED   (628        100        600        108        6          6         )
+Group User1    Process 1 IO_BLOCKED   (722        100        400        109        6          4         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         130        114        13         13        )
+Group User2    Process 2 IO_BLOCKED   (252        15         195        91         13         13        )
+Group User2    Process 3 IO_BLOCKED   (500        20         260        113        13         13        )
+Group User2    Process 0 IO_BLOCKED   (500        10         130        85         13         13        )
+Group User3    Process 0 IO_BLOCKED   (556        50         250        104        5          5         )
+Group User3    Process 1 READY        (1159       450        350        101        6          0         )
+Group System   Process 1 READY        (946        200        700        106        7          3         )
+Group User1    Process 0 IO_BLOCKED   (511        30         150        76         5          5         )
+Group User1    Process 1 READY        (722        100        470        109        7          4         )
+Group User2    Process 2 IO_BLOCKED   (252        15         210        91         14         14        )
+Group User2    Process 3 IO_BLOCKED   (500        20         280        113        14         14        )
+Group User2    Process 0 IO_BLOCKED   (500        10         140        85         14         14        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         140        114        14         14        )
+Group User3    Process 0 IO_BLOCKED   (556        50         300        104        6          6         )
+Group User3    Process 1 READY        (1159       450        400        101        7          0         )
+Group System   Process 0 COMPLETED    (628        100        628        108        7          6         )
+Group User1    Process 0 IO_BLOCKED   (511        30         180        76         6          6         )
+Group User1    Process 1 IO_BLOCKED   (722        100        500        109        8          5         )
+Group User2    Process 3 IO_BLOCKED   (500        20         300        113        15         15        )
+Group User2    Process 0 IO_BLOCKED   (500        10         150        85         15         15        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         150        114        15         15        )
+Group User2    Process 2 IO_BLOCKED   (252        15         225        91         15         15        )
+Group User3    Process 0 IO_BLOCKED   (556        50         350        104        7          7         )
+Group User3    Process 1 IO_BLOCKED   (1159       450        450        101        8          1         )
+Group System   Process 1 IO_BLOCKED   (946        200        800        106        8          4         )
+Group User1    Process 1 IO_BLOCKED   (722        100        600        109        9          6         )
+Group User2    Process 0 IO_BLOCKED   (500        10         160        85         16         16        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         160        114        16         16        )
+Group User2    Process 2 IO_BLOCKED   (252        15         240        91         16         16        )
+Group User2    Process 3 IO_BLOCKED   (500        20         320        113        16         16        )
+Group User3    Process 0 IO_BLOCKED   (556        50         400        104        8          8         )
+Group User3    Process 1 READY        (1159       450        500        101        9          1         )
+Group System   Process 1 READY        (946        200        900        106        9          4         )
+Group User1    Process 0 IO_BLOCKED   (511        30         210        76         7          7         )
+Group User1    Process 1 READY        (722        100        670        109        10         6         )
+Group User2    Process 1 IO_BLOCKED   (1313       10         170        114        17         17        )
+Group User2    Process 2 COMPLETED    (252        15         252        91         17         16        )
+Group User3    Process 0 IO_BLOCKED   (556        50         450        104        9          9         )
+Group User3    Process 1 READY        (1159       450        550        101        10         1         )
+Group System   Process 1 COMPLETED    (946        200        946        106        10         4         )
+Group User1    Process 0 IO_BLOCKED   (511        30         240        76         8          8         )
+Group User1    Process 1 IO_BLOCKED   (722        100        700        109        11         7         )
+Group User2    Process 3 IO_BLOCKED   (500        20         340        113        17         17        )
+Group User2    Process 0 IO_BLOCKED   (500        10         170        85         17         17        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         180        114        18         18        )
+Group User3    Process 0 IO_BLOCKED   (556        50         500        104        10         10        )
+Group User3    Process 1 READY        (1159       450        600        101        11         1         )
+Group User3    Process 1 READY        (1159       450        700        101        12         1         )
+Group User1    Process 1 COMPLETED    (722        100        722        109        12         7         )
+Group User2    Process 0 IO_BLOCKED   (500        10         180        85         18         18        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         190        114        19         19        )
+Group User2    Process 3 IO_BLOCKED   (500        20         360        113        18         18        )
+Group User3    Process 0 IO_BLOCKED   (556        50         550        104        11         11        )
+Group User3    Process 1 READY        (1159       450        750        101        13         1         )
+Group User1    Process 0 IO_BLOCKED   (511        30         270        76         9          9         )
+Group User2    Process 0 IO_BLOCKED   (500        10         190        85         19         19        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         200        114        20         20        )
+Group User3    Process 1 READY        (1159       450        850        101        14         1         )
+Group User2    Process 3 IO_BLOCKED   (500        20         380        113        19         19        )
+Group User3    Process 0 COMPLETED    (556        50         556        104        12         11        )
+Group User1    Process 0 IO_BLOCKED   (511        30         300        76         10         10        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         210        114        21         21        )
+Group User2    Process 3 IO_BLOCKED   (500        20         400        113        20         20        )
+Group User2    Process 0 IO_BLOCKED   (500        10         200        85         20         20        )
+Group User3    Process 1 IO_BLOCKED   (1159       450        900        101        15         2         )
+Group User1    Process 0 IO_BLOCKED   (511        30         330        76         11         11        )
+System Idle for 1
+Group User3    Process 1 READY        (1159       450        1073       101        17         2         )
+Group User3    Process 1 COMPLETED    (1159       450        1159       101        18         2         )
+Group User1    Process 0 IO_BLOCKED   (511        30         360        76         12         12        )
+Group User2    Process 1 IO_BLOCKED   (1313       10         230        114        23         23        )
+Group User2    Process 3 IO_BLOCKED   (500        20         440        113        22         22        )
+Group User2    Process 0 IO_BLOCKED   (500        10         220        85         22         22        )
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+Group User2    Process 1 IO_BLOCKED   (1313       10         320        114        33         32        )
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+Group User2    Process 1 IO_BLOCKED   (1313       10         440        114        46         44        )
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+Group User2    Process 1 IO_BLOCKED   (1313       10         550        114        58         55        )
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+System Idle for 1
+Group User2    Process 1 IO_BLOCKED   (1313       10         680        114        72         68        )
+System Idle for 1
+System Idle for 1
+System Idle for 1

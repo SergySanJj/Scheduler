@@ -134,8 +134,8 @@ public class SimulationController implements ActionOnQuantum {
     public String receiveQuantum(int quantumm, int currentTime) {
         if (quantumm<=0)
             return "";
-        RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
-        return null;
+        String s = RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
+        return s;
     }
 
     @Override
@@ -153,7 +153,6 @@ public class SimulationController implements ActionOnQuantum {
 
     private int selectNextAvailable(int currentTime) {
         if (allUnavailable(currentTime)) {
-            lastWorked = 0;
             return -1;
         } else {
             int checkCount = 0;

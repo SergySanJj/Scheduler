@@ -36,9 +36,9 @@ public class GroupController implements ActionOnQuantum {
     public String receiveQuantum(int quantum, int currentTime) {
         updateState(currentTime);
 
-        RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
+        String s = RoundRobinMultiLayer.run(nextAvailable(currentTime), quantum, currentTime);
 
-        return getStatus();
+        return s;
     }
 
     public ProcessState updateState(int currentTime) {
@@ -53,8 +53,7 @@ public class GroupController implements ActionOnQuantum {
 
     @Override
     public String getStatus() {
-        String processStatus = processList.get(lastWorked).getStatus();
-        String res = "Group " + StringMisc.form(getName())  + " Process " + lastWorked + " " + processStatus;
+        String res = "Group " + StringMisc.form(getName())  + " Process " + lastWorked + " ";
         return res;
     }
 

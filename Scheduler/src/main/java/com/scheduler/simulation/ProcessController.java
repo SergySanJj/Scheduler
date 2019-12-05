@@ -75,9 +75,10 @@ public class ProcessController implements ActionOnQuantum {
                 workedAfterUnblock = 0;
                 quantum--;
                 currentTime++;
+                String subcalls = getStatus();
                 if (quantum > 0)
-                    parent.nextAvailable(currentTime).receiveQuantum(quantum, currentTime);
-                return getStatus();
+                    subcalls += "\n"+parent.nextAvailable(currentTime).receiveQuantum(quantum, currentTime);
+                return subcalls;
             }
 
             quantum--;
@@ -90,6 +91,7 @@ public class ProcessController implements ActionOnQuantum {
     @Override
     public String getStatus() {
         StringBuilder res = new StringBuilder();
+        res.append(parent.getStatus());
         res.append(StringMisc.form(currentState.toString(), 12)).append(" (").
                 append(StringMisc.form(cpuTimeNeeden, 10)).append(" ").
                 append(StringMisc.form(ioblocking, 10)).append(" ").
