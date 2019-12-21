@@ -206,27 +206,6 @@ Total           Cpu Need        Cpu Worked      Quantum got     Processes       
 ```
 
 
-Summary-Processes.txt
-```
-GroupName     GroupState ProcessID ProcessState CPUneed     IOblock    CPUworked  BlockTime  QuantsGot  TimesBlocked  
-``` 
-Group User1   REGISTERED Process 1 IO_BLOCKED   (1007       100        100        91         1          1         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (1456       10         100        94         1          10        )
-Group User3   REGISTERED Process 1 REGISTERED   (790        450        100        88         1          0         )
-Group System  REGISTERED Process 1 REGISTERED   (839        200        100        116        1          0         )
-Group User1   REGISTERED Process 2 IO_BLOCKED   (623        100        100        115        1          1         )
-Group User2   REGISTERED Process 2 IO_BLOCKED   (1099       15         100        109        1          6         )
-Group User3   REGISTERED Process 2 REGISTERED   (969        2000       100        69         1          0         )
-Group System  REGISTERED Process 0 IO_BLOCKED   (979        100        100        77         1          1         )
-...
-Group User1   REGISTERED Process 2 COMPLETED    (623        100        623        115        7          6         )
-Group User2   REGISTERED Process 3 IO_BLOCKED   (1047       20         700        110        7          35        )
-Group User3   REGISTERED Process 2 REGISTERED   (969        2000       700        69         7          0         )
-Group User1   REGISTERED Process 3 COMPLETED    (692        200        692        106        7          3         )
-Group User2   REGISTERED Process 1 IO_BLOCKED   (1456       10         800        94         8          80        )
-Group User3   REGISTERED Process 3 IO_BLOCKED   (1015       100        700        109        7          7         )
-```
-
 
 # Algorithm
 
